@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: propintel-backend
+
+  # 개발용 H2 (돈 0원)
+  datasource:
+    url: jdbc:h2:mem:propintel;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+  # Flyway 개발중엔 끄기
+  flyway:
+    enabled: false
+
+  # Caffeine 캐시 (Redis 대신 - 무료)
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=600s
+
+server:
+  port: 8080
+
+openai:
+  api-key: ${OPENAI_API_KEY:test-key}
+  model: gpt-3.5-turbo
+  max-tokens: 1000
+
+molit:
+  api-key: ${MOLIT_API_KEY:test-key}
+  base-url: https://apis.data.go.kr/1613000
