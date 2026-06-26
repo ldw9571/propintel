@@ -1,4 +1,4 @@
-package com.propintel.propintel;
+package com.propintel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
