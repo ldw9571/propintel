@@ -7,7 +7,7 @@ import com.propintel.domain.report.entity.AiReport;
 import com.propintel.domain.report.repository.AiReportRepository;
 import com.propintel.domain.score.entity.ComplexScore;
 import com.propintel.domain.score.repository.ComplexScoreRepository;
-import com.propintel.infra.openai.OpenAiClient;
+import com.propintel.infra.openai.GeminiClient ;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.Optional;
 @Slf4j
 public class AiReportService {
 
-    private final OpenAiClient           openAiClient;
+    private final GeminiClient            openAiClient;
     private final ComplexRepository      complexRepository;
     private final ComplexScoreRepository scoreRepository;
     private final AiReportRepository     reportRepository;

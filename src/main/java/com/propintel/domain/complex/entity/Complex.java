@@ -1,5 +1,6 @@
 package com.propintel.domain.complex.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.propintel.domain.region.entity.Region;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity @Table(name = "complex")
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  // ← 이 줄 추가
 public class Complex {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

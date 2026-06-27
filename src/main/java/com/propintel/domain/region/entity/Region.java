@@ -1,5 +1,6 @@
 package com.propintel.domain.region.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity @Table(name = "region")
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  // ← 이 줄 추가
 public class Region {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

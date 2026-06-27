@@ -39,4 +39,15 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
         ORDER BY year, month
     """)
     List<Object[]> findMonthlyVolume();
+
+    @Query("SELECT t.price FROM Transaction t")
+    List<Long> findAllPrices();
+
+    @Query("SELECT t.price FROM Transaction t WHERE t.dealDate BETWEEN :start AND :end")
+    List<Long> findPricesByDateRange(
+            @Param("start") LocalDate start,
+            @Param("end") LocalDate end);
+
+    // ← 이것만 추가
+    long countByDealDateBetween(LocalDate start, LocalDate end);
 }

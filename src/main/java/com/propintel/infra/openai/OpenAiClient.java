@@ -11,11 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class OpenAiClient {
 
-    @Value("${openai.api-key}")
+    @Value("${openai.api-key:dummy}")  // ← 기본값 dummy 추가
     private String apiKey;
 
     @Value("${openai.model:gpt-4o}")
@@ -48,7 +47,7 @@ public class OpenAiClient {
 
         try {
             List<?> choices = (List<?>) response.get("choices");
-            Map<?, ?> first   = (Map<?, ?>) choices.get(0);
+            Map<?, ?> first = (Map<?, ?>) choices.get(0);
             Map<?, ?> message = (Map<?, ?>) first.get("message");
             return (String) message.get("content");
         } catch (Exception e) {
