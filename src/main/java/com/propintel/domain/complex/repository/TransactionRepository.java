@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
+    // ⬇️ 추가
+    List<Transaction> findByComplexId(Long complexId);
+
     @Query("""
         SELECT t FROM Transaction t
         WHERE t.complex.id = :complexId
@@ -48,6 +51,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
             @Param("start") LocalDate start,
             @Param("end") LocalDate end);
 
-    // ← 이것만 추가
     long countByDealDateBetween(LocalDate start, LocalDate end);
 }

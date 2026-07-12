@@ -7,7 +7,7 @@ import com.propintel.domain.complex.repository.ComplexRepository;
 import com.propintel.domain.complex.repository.TransactionRepository;
 import com.propintel.domain.region.entity.Region;
 import com.propintel.domain.region.repository.RegionRepository;
-import com.propintel.infra.molit.MolitApiClient;
+import com.propintel.infra.molit.MolitApiClient;   // ⬅️ 이 줄 추가
 import com.propintel.infra.molit.dto.MolitTransactionDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
